@@ -1,20 +1,15 @@
+// App.js
+
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, ScrollView, TouchableOpacity, Image, Text, FlatList } from 'react-native';
+import { View, ScrollView, TouchableOpacity, Image, Text } from 'react-native';
+import { styles } from './components/styles'; // Stil dosyasını içe aktarın
 import Search from './components/search';
 import Sidebar from './components/sidebar';
 import Navbar from './components/navbar';
 
 export default function App() {
-  const [searchResults, setSearchResults] = useState([]);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const data = [
-    { id: 1, title: 'Kitap 1' },
-    { id: 2, title: 'Kitap 2' },
-    { id: 3, title: 'Kitap 3' },
-    { id: 4, title: 'Kitap 4' },
-  ];
 
   const images = [
     require('./image/bbkm.png'),
@@ -56,14 +51,12 @@ export default function App() {
         <ScrollView style={styles.leftPanel}>
           <View style={styles.imageContainer}>
             <ScrollView horizontal>
-              {images.map((image, index) => (
-                <TouchableOpacity key={index} onPress={handleImagePress}>
-                  <Image
-                    source={image}
-                    style={styles.image}
-                  />
-                </TouchableOpacity>
-              ))}
+              <TouchableOpacity onPress={handleImagePress}>
+                <Image
+                  source={images[currentImageIndex]}
+                  style={styles.image}
+                />
+              </TouchableOpacity>
             </ScrollView>
           </View>
 
@@ -113,96 +106,3 @@ export default function App() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 15,
-  },
-  mainContainer: {
-    flexDirection: 'row',
-    flex: 1,
-  },
-  leftPanel: {
-    flex: 1,
-    marginRight: 10,
-  },
-  imageContainer: {
-  },
-  image: {
-    width: 220,
-    height: 230,
-    marginRight: 25,
-    resizeMode: 'contain',
-  },
-  otherImagesContainer: {
-    marginLeft: 8,
-    marginTop: 30,
-    marginRight: 10,
-  },
-  otherImageContainer: {
-    alignItems: 'center',
-    marginBottom: 20,
-    marginRight: 8, 
-  },
-  otherImage: {
-    width: 85,
-    height: 110,
-    resizeMode: 'cover',
-  },
-  subText: {
-    fontSize: 10,
-    fontWeight: 'normal',
-    color: 'black',
-    fontStyle: 'italic',
-    marginTop: 5,
-  },
-  additionalImagesContainer: {
-    marginTop: 20,
-    marginBottom: 20,
-    marginLeft: 8,
-    marginRight: 10,
-  },
-  additionalImageContainer: {
-    alignItems: 'left',
-    marginBottom: 20,
-    marginRight: 8,
-  },
-  additionalImage: {
-    width: 70,
-    height: 100,
-    resizeMode: 'cover',
-  },
-  additionalText: {
-    fontSize: 10,
-    fontWeight: 'normal',
-    color: 'black',
-    fontStyle: 'italic',
-    marginTop: 5,
-  },
-  mostRead: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 10,
-  },
-  footer: {
-    backgroundColor: '#ff6a00',
-    paddingVertical: 5, // Küçük boyut
-    paddingHorizontal: 10, // Küçük boyut
-    borderTopWidth: 1,
-    borderTopColor: '#ccc',
-    alignItems: 'center',
-  },
-  footerLinks: {
-    flexDirection: 'row',
-    marginBottom: 5, // Küçük boşluk
-  },
-  footerLink: {
-    marginRight: 10, // Daha az boşluk
-    color: 'white',
-    fontWeight: 'bold',
-  },
-  footerText: {
-    color: 'white',
-  },
-});
