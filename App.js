@@ -3,13 +3,14 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, ScrollView, TouchableOpacity, Image, Text } from 'react-native';
-import { styles } from './components/styles'; // Stil dosyasını içe aktarın
+import { styles } from './styles'; // styles.js dosyasından stilleri import et
 import Search from './components/search';
 import Sidebar from './components/sidebar';
 import Navbar from './components/navbar';
 
 export default function App() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState('anasayfa'); // State ekledik
 
   const images = [
     require('./image/bbkm.png'),
@@ -42,62 +43,94 @@ export default function App() {
     setCurrentImageIndex(nextIndex);
   };
 
+  const handlePageChange = (page) => { // Yeni sayfa değiştirme fonksiyonu
+    setCurrentPage(page);
+  };
+
+  let pageContent;
+  if (currentPage === 'anasayfa') {
+    pageContent = (
+      <ScrollView style={styles.leftPanel}>
+        <View style={styles.imageContainer}>
+          <ScrollView horizontal>
+            <TouchableOpacity onPress={handleImagePress}>
+              <Image
+                source={images[currentImageIndex]}
+                style={styles.image}
+              />
+            </TouchableOpacity>
+          </ScrollView>
+        </View>
+
+        <View style={styles.otherImagesContainer}>
+          <Text style={styles.mostRead}>En Çok Okunanlar</Text>
+          <ScrollView horizontal>
+            {otherImages.map((item, index) => (
+              <TouchableOpacity key={index} style={styles.otherImageContainer}>
+                <Image
+                  source={item.image}
+                  style={styles.otherImage}
+                  resizeMode="cover" 
+                />
+                <Text style={styles.subText}>{item.name}</Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+        </View>
+        
+        <ScrollView style={styles.additionalImagesContainer}>
+          {additionalImages.map((item, index) => (
+            <View key={index} style={styles.additionalImageContainer}>
+              <Image
+                source={item.image}
+                style={styles.additionalImage}
+                resizeMode="cover"
+              />
+              <Text style={styles.additionalText}>{item.name}</Text>
+            </View>
+          ))}
+        </ScrollView>
+      </ScrollView>
+    );
+  } else if (currentPage === 'roman') { // Yeni sayfa ekledik
+    pageContent = (
+      <View style={styles.leftPanel}>
+        <Text>Roman Sayfası</Text>
+        {/* Roman içeriği buraya gelebilir */}
+      </View>
+    );
+  } else if (currentPage === 'hikaye') { // Yeni sayfa ekledik
+    pageContent = (
+      <View style={styles.leftPanel}>
+        <Text>Hikaye Sayfası</Text>
+        {/* Hikaye içeriği buraya gelebilir */}
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <Search />
       <Navbar />
 
       <View style={styles.mainContainer}>
-        <ScrollView style={styles.leftPanel}>
-          <View style={styles.imageContainer}>
-            <ScrollView horizontal>
-              <TouchableOpacity onPress={handleImagePress}>
-                <Image
-                  source={images[currentImageIndex]}
-                  style={styles.image}
-                />
-              </TouchableOpacity>
-            </ScrollView>
-          </View>
-
-          <View style={styles.otherImagesContainer}>
-            <Text style={styles.mostRead}>En Çok Okunanlar</Text>
-            <ScrollView horizontal>
-              {otherImages.map((item, index) => (
-                <TouchableOpacity key={index} style={styles.otherImageContainer}>
-                  <Image
-                    source={item.image}
-                    style={styles.otherImage}
-                    resizeMode="cover" 
-                  />
-                  <Text style={styles.subText}>{item.name}</Text>
-                </TouchableOpacity>
-              ))}
-            </ScrollView>
-          </View>
-          
-          <ScrollView style={styles.additionalImagesContainer}>
-            {additionalImages.map((item, index) => (
-              <View key={index} style={styles.additionalImageContainer}>
-                <Image
-                  source={item.image}
-                  style={styles.additionalImage}
-                  resizeMode="cover"
-                />
-                <Text style={styles.additionalText}>{item.name}</Text>
-              </View>
-            ))}
-          </ScrollView>
-        </ScrollView>
+        {pageContent} {/* Dinamik olarak sayfa içeriğini buraya yerleştiriyoruz */}
         
         <Sidebar />
       </View>
 
       <View style={styles.footer}>
         <View style={styles.footerLinks}>
-          <Text style={styles.footerLink}>Anasayfa</Text>
-          <Text style={styles.footerLink}>Roman</Text>
-          <Text style={styles.footerLink}>Hikaye</Text>
+          {/* Butonlar ekledik ve onPress olaylarıyla yeni sayfalara geçişi sağladık */}
+          <TouchableOpacity onPress={() => handlePageChange('anasayfa')} style={styles.footerLink}>
+            <Text>Anasayfa</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handlePageChange('roman')} style={styles.footerLink}>
+            <Text>Roman</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => handlePageChange('hikaye')} style={styles.footerLink}>
+            <Text>Hikaye</Text>
+          </TouchableOpacity>
         </View>
         <Text style={styles.footerText}>Tüm hakları saklıdır. © 2024</Text>
       </View>
