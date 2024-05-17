@@ -3,14 +3,14 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, ScrollView, TouchableOpacity, Image, Text } from 'react-native';
-import { styles } from './styles'; // styles.js dosyasından stilleri import et
+import { styles } from './styles'; // Import styles from styles.js
 import Search from './components/search';
 import Sidebar from './components/sidebar';
 import Navbar from './components/navbar';
 
 export default function App() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [currentPage, setCurrentPage] = useState('anasayfa'); // State ekledik
+  const [currentPage, setCurrentPage] = useState('anasayfa'); // State added
 
   const images = [
     require('./image/bbkm.png'),
@@ -43,7 +43,7 @@ export default function App() {
     setCurrentImageIndex(nextIndex);
   };
 
-  const handlePageChange = (page) => { // Yeni sayfa değiştirme fonksiyonu
+  const handlePageChange = (page) => {
     setCurrentPage(page);
   };
 
@@ -54,10 +54,7 @@ export default function App() {
         <View style={styles.imageContainer}>
           <ScrollView horizontal>
             <TouchableOpacity onPress={handleImagePress}>
-              <Image
-                source={images[currentImageIndex]}
-                style={styles.image}
-              />
+              <Image source={images[currentImageIndex]} style={styles.image} />
             </TouchableOpacity>
           </ScrollView>
         </View>
@@ -67,43 +64,35 @@ export default function App() {
           <ScrollView horizontal>
             {otherImages.map((item, index) => (
               <TouchableOpacity key={index} style={styles.otherImageContainer}>
-                <Image
-                  source={item.image}
-                  style={styles.otherImage}
-                  resizeMode="cover" 
-                />
+                <Image source={item.image} style={styles.otherImage} resizeMode="cover" />
                 <Text style={styles.subText}>{item.name}</Text>
               </TouchableOpacity>
             ))}
           </ScrollView>
         </View>
-        
+
         <ScrollView style={styles.additionalImagesContainer}>
           {additionalImages.map((item, index) => (
             <View key={index} style={styles.additionalImageContainer}>
-              <Image
-                source={item.image}
-                style={styles.additionalImage}
-                resizeMode="cover"
-              />
+              <Image source={item.image} style={styles.additionalImage} resizeMode="cover" />
               <Text style={styles.additionalText}>{item.name}</Text>
             </View>
           ))}
         </ScrollView>
       </ScrollView>
     );
-  } else if (currentPage === 'roman') { // Yeni sayfa ekledik
+  } else if (currentPage === 'roman') {
     pageContent = (
       <View style={styles.leftPanel}>
         <Text>Roman Sayfası</Text>
-        {/* Roman içeriği buraya gelebilir */}
+        {/* Roman content can go here */}
       </View>
     );
-  } else if (currentPage === 'hikaye') { // Yeni sayfa ekledik
+  } else if (currentPage === 'hikaye') {
     pageContent = (
       <View style={styles.leftPanel}>
         <Text>Hikaye Sayfası</Text>
-        {/* Hikaye içeriği buraya gelebilir */}
+        {/* Hikaye content can go here */}
       </View>
     );
   }
@@ -111,17 +100,16 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Search />
-      <Navbar />
+      <Navbar handlePageChange={handlePageChange} /> {/* Pass handlePageChange as a prop */}
 
       <View style={styles.mainContainer}>
-        {pageContent} {/* Dinamik olarak sayfa içeriğini buraya yerleştiriyoruz */}
+        {pageContent} {/* Insert dynamic page content here */}
         
         <Sidebar />
       </View>
 
       <View style={styles.footer}>
         <View style={styles.footerLinks}>
-          {/* Butonlar ekledik ve onPress olaylarıyla yeni sayfalara geçişi sağladık */}
           <TouchableOpacity onPress={() => handlePageChange('anasayfa')} style={styles.footerLink}>
             <Text>Anasayfa</Text>
           </TouchableOpacity>
