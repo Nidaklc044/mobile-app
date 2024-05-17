@@ -8,6 +8,7 @@ import Search from './components/search';
 import Sidebar from './components/sidebar';
 import Navbar from './components/navbar';
 import HikayePage from './HikayePage'; // HikayePage bileşenini içe aktar
+import RomanPage from './RomanPage'; // RomanPage bileşenini içe aktar
 
 export default function App() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -83,12 +84,7 @@ export default function App() {
       </ScrollView>
     );
   } else if (currentPage === 'roman') {
-    pageContent = (
-      <View style={styles.leftPanel}>
-        <Text>Roman Sayfası</Text>
-        {/* Roman içeriği buraya gelebilir */}
-      </View>
-    );
+    pageContent = <RomanPage />; // RomanPage bileşenini kullan
   } else if (currentPage === 'hikaye') {
     pageContent = <HikayePage />; // HikayePage bileşenini kullan
   }
@@ -115,7 +111,6 @@ export default function App() {
             <Text>Hikaye</Text>
           </TouchableOpacity>
         </View>
-        <Text style={styles.footerText}>Tüm hakları saklıdır. © 2024</Text>
       </View>
 
       <StatusBar style="auto" />

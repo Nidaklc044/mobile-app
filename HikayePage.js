@@ -49,7 +49,7 @@ const HikayePage = () => {
       </View>
 
       <View style={styles.otherImagesContainer}>
-        <Text style={styles.mostRead}>En Çok Okunanlar</Text>
+        <Text style={styles.mostRead}>En Çok Okunan Hikayeler</Text>
         <ScrollView horizontal>
           {otherImages.map((item, index) => (
             <TouchableOpacity key={index} style={styles.otherImageContainer}>
