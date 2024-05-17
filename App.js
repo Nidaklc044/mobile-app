@@ -3,14 +3,15 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, ScrollView, TouchableOpacity, Image, Text } from 'react-native';
-import { styles } from './styles'; // Import styles from styles.js
+import { styles } from './styles';
 import Search from './components/search';
 import Sidebar from './components/sidebar';
 import Navbar from './components/navbar';
+import HikayePage from './HikayePage'; // HikayePage bileşenini içe aktar
 
 export default function App() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [currentPage, setCurrentPage] = useState('anasayfa'); // State added
+  const [currentPage, setCurrentPage] = useState('anasayfa');
 
   const images = [
     require('./image/bbkm.png'),
@@ -85,26 +86,20 @@ export default function App() {
     pageContent = (
       <View style={styles.leftPanel}>
         <Text>Roman Sayfası</Text>
-        {/* Roman content can go here */}
+        {/* Roman içeriği buraya gelebilir */}
       </View>
     );
   } else if (currentPage === 'hikaye') {
-    pageContent = (
-      <View style={styles.leftPanel}>
-        <Text>Hikaye Sayfası</Text>
-        {/* Hikaye content can go here */}
-      </View>
-    );
+    pageContent = <HikayePage />; // HikayePage bileşenini kullan
   }
 
   return (
     <View style={styles.container}>
       <Search />
-      <Navbar handlePageChange={handlePageChange} /> {/* Pass handlePageChange as a prop */}
+      <Navbar handlePageChange={handlePageChange} /> {/* handlePageChange fonksiyonunu prop olarak geç */}
 
       <View style={styles.mainContainer}>
-        {pageContent} {/* Insert dynamic page content here */}
-        
+        {pageContent} {/* Dinamik olarak sayfa içeriğini buraya yerleştiriyoruz */}
         <Sidebar />
       </View>
 
