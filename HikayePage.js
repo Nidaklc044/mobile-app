@@ -1,13 +1,9 @@
-// HikayePage.js
-
 import React, { useState } from 'react';
 import { View, ScrollView, TouchableOpacity, Image, Text } from 'react-native';
-import { Picker } from '@react-native-picker/picker';  // Picker bileşenini içe aktarın
 import { styles } from './styles';
 
 const HikayePage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [selectedBooks, setSelectedBooks] = useState({});  // Seçilen kitapları takip edin
 
   const images = [
     require('./image/bbkm.png'),
@@ -28,23 +24,16 @@ const HikayePage = () => {
   ];
 
   const additionalImages = [
-    { image: require('./image/mufettislermufettisi.png'), name: 'Müfettişler Müfettişi', summary: 'Image 4 özeti' },
-    { image: require('./image/bilinmeyenbirkm.png'), name: 'Bilinmeyen Bir \nKadının Mektubu', summary: 'Image 1 özeti' },
-    { image: require('./image/dünya.png'), name: 'Dünyanın \nMerkezine Yolculuk', summary: 'Image 2 özeti' },
-    { image: require('./image/icimizdekibiz.png'), name: 'İçimizdeki Biz', summary: 'Image 3 özeti' },
-    { image: require('./image/kosktekiesrar.png'), name: 'Köşkteki Esrar', summary: 'Image 4 özeti' },
+    { image: require('./image/mufettislermufettisi.png'), name: 'Müfettişler Müfettişi', summary: 'Müfettişler Müfettişi özeti' },
+    { image: require('./image/bilinmeyenbirkm.png'), name: 'Bilinmeyen Bir \nKadının Mektubu', summary: 'Bilinmeyen Bir Kadının Mektubu özeti' },
+    { image: require('./image/dünya.png'), name: 'Dünyanın \nMerkezine Yolculuk', summary: 'Dünyanın Merkezine Yolculuk özeti' },
+    { image: require('./image/icimizdekibiz.png'), name: 'İçimizdeki Biz', summary: 'İçimizdeki Biz özeti' },
+    { image: require('./image/kosktekiesrar.png'), name: 'Köşkteki Esrar', summary: 'Köşkteki Esrar özeti' },
   ];
 
   const handleImagePress = () => {
     const nextIndex = (currentImageIndex + 1) % images.length;
     setCurrentImageIndex(nextIndex);
-  };
-
-  const handlePickerChange = (itemValue, itemIndex) => {
-    setSelectedBooks({
-      ...selectedBooks,
-      [itemIndex]: itemValue
-    });
   };
 
   return (
@@ -64,6 +53,7 @@ const HikayePage = () => {
             <TouchableOpacity key={index} style={styles.otherImageContainer}>
               <Image source={item.image} style={styles.otherImage} resizeMode="cover" />
               <Text style={styles.subText}>{item.name}</Text>
+              <Text style={styles.subText}>{item.summary}</Text> {/* Eklenen metin alanı */}
             </TouchableOpacity>
           ))}
         </ScrollView>
@@ -74,16 +64,7 @@ const HikayePage = () => {
           <View key={index} style={styles.additionalImageContainer}>
             <Image source={item.image} style={styles.additionalImage} resizeMode="cover" />
             <Text style={styles.additionalText}>{item.name}</Text>
-            <Picker
-              selectedValue={selectedBooks[index]}
-              onValueChange={(itemValue) => handlePickerChange(itemValue, index)}
-              style={styles.picker}
-            >
-              <Picker.Item label="Seçiniz" value="" />
-              <Picker.Item label="Seçenek 1" value="option1" />
-              <Picker.Item label="Seçenek 2" value="option2" />
-              <Picker.Item label="Seçenek 3" value="option3" />
-            </Picker>
+            <Text style={styles.additionalText}>{item.summary}</Text> {/* Eklenen metin alanı */}
           </View>
         ))}
       </ScrollView>
