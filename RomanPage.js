@@ -68,7 +68,7 @@ const RomanPage = () => {
       </View>
 
       <View style={styles.otherImagesContainer}>
-        <Text style={styles.mostRead}>En Çok Okunan Hikayeler</Text>
+        <Text style={styles.mostRead}>En Çok Okunan Romanlar</Text>
         <ScrollView horizontal>
           {otherImages.map((item, index) => (
             <TouchableOpacity key={index} style={styles.otherImageContainer} onPress={() => handleOzetPress(item)}>
