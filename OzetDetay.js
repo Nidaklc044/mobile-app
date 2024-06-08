@@ -1,22 +1,28 @@
-// OzetDetay.js
-
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Image, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { styles } from './styles';
 
 const OzetDetay = ({ ozet, image, handleBack }) => {
+  const [showFullSummary, setShowFullSummary] = useState(false);
+
+  const toggleSummary = () => {
+    setShowFullSummary(!showFullSummary);
+  };
+
   return (
-    <ScrollView contentContainerStyle={styles.scrollView}>
-      <View style={styles.container}>
-        <TouchableOpacity onPress={handleBack} style={styles.backButton}>
-          <Text style={styles.backText}>Geri</Text>
+    <ScrollView>
+      <View style={styles.leftPanel}>
+        <TouchableOpacity onPress={handleBack}>
+          <Text style={{ color: 'blue', marginBottom: 10 }}>Geri Dön</Text>
         </TouchableOpacity>
-        <View style={styles.header}>
-          <Image source={image} style={styles.image} resizeMode="cover" />
-          <Text style={styles.title}>{ozet.name}</Text>
-        </View>
-        <View style={styles.content}>
-          <Text style={styles.summary}>{ozet.summary}</Text>
+        <Image source={image} style={styles.image} resizeMode="cover" />
+        <View style={styles.otherImagesContainer}>
+          <Text style={styles.additionalName}>{showFullSummary ? ozet : ozet.slice(0, 100) + '...'}</Text>
+          {!showFullSummary && (
+            <TouchableOpacity onPress={toggleSummary}>
+              <Text style={{ color: 'blue', marginTop: 5 }}>Devamını Oku</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     </ScrollView>

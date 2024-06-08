@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { View, ScrollView, TouchableOpacity, Image, Text, Modal, Button } from 'react-native';
+import { View, ScrollView, TouchableOpacity, Image, Text } from 'react-native';
 import { styles } from './styles';
+import OzetDetay from './OzetDetay';
 
 const RomanPage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [currentSummary, setCurrentSummary] = useState(''); // Özet için state değişkeni
-  const [modalVisible, setModalVisible] = useState(false); // Modal görünürlüğü için state değişkeni
+  const [selectedOzet, setSelectedOzet] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [showOzet, setShowOzet] = useState(false);
 
   const images = [
     require('./image/bbkm.png'),
@@ -15,22 +17,22 @@ const RomanPage = () => {
   ];
 
   const otherImages = [
-    { image: require('./image/calikusu.png'), name: 'Çalıkuşu', summary: 'Çalıkuşu özeti burada...' },
-    { image: require('./image/suc.png'), name: 'Suç ve Ceza', summary: 'Suç ve Ceza özeti burada...' },
-    { image: require('./image/donusum.png'), name: 'Dönüşüm', summary: 'Dönüşüm özeti burada...' },
-    { image: require('./image/livaneli.png'), name: 'Serenad', summary: 'Serenad özeti burada...' },
-    { image: require('./image/anna.png'), name: 'Anna Karenina', summary: 'Anna Karenina özeti burada...' },
-    { image: require('./image/bk.png'), name: 'Bilinmeyen Kavga', summary: 'Bilinmeyen Kavga özeti burada...' },
-    { image: require('./image/saat.png'), name: 'Saatleri Ayarlama \nEnstitüsü', summary: 'Saatleri A. Enstitüsü özeti burada...' },
-    { image: require('./image/gece.png'), name: 'Olağanüstü \nBir Gece', summary: 'Olağanüstü Bir Gece özeti burada...' },
+    { image: require('./image/calikusu.png'), name: 'Çalıkuşu', summary: 'Çalıkuşu özeti' },
+    { image: require('./image/suc.png'), name: 'Suç ve Ceza', summary: 'Suç ve Ceza özeti' },
+    { image: require('./image/donusum.png'), name: 'Dönüşüm', summary: 'Dönüşüm özeti' },
+    { image: require('./image/livaneli.png'), name: 'Serenad', summary: 'Serenad özeti' },
+    { image: require('./image/anna.png'), name: 'Anna Karenina', summary: 'Anna Karenina özeti' },
+    { image: require('./image/bk.png'), name: 'Bilinmeyen Kavga', summary: 'Bilinmeyen Kavga özeti' },
+    { image: require('./image/saat.png'), name: 'Saatleri Ayarlama Enstitüsü', summary: 'Saatleri A. Enstitüsü özeti' },
+    { image: require('./image/gece.png'), name: 'Olağanüstü Bir Gece', summary: 'Olağanüstü Bir Gece özeti' },
   ];
 
   const additionalImages = [
-    { image: require('./image/mufettislermufettisi.png'), name: ' Müfettişler Müfettişi', summary: 'Müfettişler Müfettişi özeti burada...' },
-    { image: require('./image/bilinmeyenbirkm.png'), name: 'Bilinmeyen Bir \nKadının Mektubu', summary: 'Bilinmeyen Bir Kadının Mektubu özeti burada...' },
-    { image: require('./image/dünya.png'), name: 'Dünyanın \nMerkezine Yolculuk', summary: 'Dünyanın Merkezine Yolculuk özeti burada...' },
-    { image: require('./image/icimizdekibiz.png'), name: 'İçimizdeki Biz', summary: 'İçimizdeki Biz özeti burada...' },
-    { image: require('./image/kosktekiesrar.png'), name: 'Köşkteki Esrar', summary: 'Köşkteki Esrar özeti burada...' },
+    { image: require('./image/mufettislermufettisi.png'), name: 'Müfettişler Müfettişi', summary: 'Müfettişler Müfettişi özeti' },
+    { image: require('./image/bilinmeyenbirkm.png'), name: 'Bilinmeyen Bir Kadının Mektubu', summary: 'Bilinmeyen Bir Kadının Mektubu özeti' },
+    { image: require('./image/dünya.png'), name: 'Dünyanın Merkezine Yolculuk', summary: 'Dünyanın Merkezine Yolculuk özeti' },
+    { image: require('./image/icimizdekibiz.png'), name: 'İçimizdeki Biz', summary: 'İçimizdeki Biz özeti' },
+    { image: require('./image/kosktekiesrar.png'), name: 'Köşkteki Esrar', summary: 'Köşkteki Esrar özeti' },
   ];
 
   const handleImagePress = () => {
@@ -38,14 +40,21 @@ const RomanPage = () => {
     setCurrentImageIndex(nextIndex);
   };
 
-  const handleBookPress = (summary) => {
-    setCurrentSummary(summary);
-    setModalVisible(true);
+  const handleOzetPress = (item) => {
+    setSelectedOzet(item.summary);
+    setSelectedImage(item.image);
+    setShowOzet(true); // Özet gösterildiğinde set etmek için
   };
 
-  const closeModal = () => {
-    setModalVisible(false);
+  const handleBack = () => {
+    setShowOzet(false); // Geri butonuna basıldığında özeti gizlemek için
   };
+
+  if (showOzet) {
+    return (
+      <OzetDetay ozet={selectedOzet} image={selectedImage} handleBack={handleBack} />
+    );
+  }
 
   return (
     <ScrollView style={styles.leftPanel}>
@@ -61,7 +70,7 @@ const RomanPage = () => {
         <Text style={styles.mostRead}>En Çok Okunan Romanlar</Text>
         <ScrollView horizontal>
           {otherImages.map((item, index) => (
-            <TouchableOpacity key={index} style={styles.otherImageContainer} onPress={() => handleBookPress(item.summary)}>
+            <TouchableOpacity key={index} style={styles.otherImageContainer} onPress={() => handleOzetPress(item)}>
               <Image source={item.image} style={styles.otherImage} resizeMode="cover" />
               <Text style={styles.subText}>{item.name}</Text>
             </TouchableOpacity>
@@ -71,26 +80,12 @@ const RomanPage = () => {
       
       <ScrollView style={styles.additionalImagesContainer}>
         {additionalImages.map((item, index) => (
-          <TouchableOpacity key={index} style={styles.additionalImageContainer} onPress={() => handleBookPress(item.summary)}>
+          <View key={index} style={styles.additionalImageContainer}>
             <Image source={item.image} style={styles.additionalImage} resizeMode="cover" />
             <Text style={styles.additionalText}>{item.name}</Text>
-          </TouchableOpacity>
+          </View>
         ))}
       </ScrollView>
-
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={closeModal}
-      >
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalContainer}>
-            <Text style={styles.summaryText}>{currentSummary}</Text>
-            <Button title="Kapat" onPress={closeModal} />
-          </View>
-        </View>
-      </Modal>
     </ScrollView>
   );
 };

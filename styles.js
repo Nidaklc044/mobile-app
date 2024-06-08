@@ -150,5 +150,39 @@ export const styles = StyleSheet.create({
     backgroundColor:'blue',
     
   },
+
+
+
+
+  additionalImagesContainer: {
+    margin: 10,
+  },
+  additionalImageContainer: {
+    flexDirection: 'row',
+    marginVertical: 10,
+    alignItems: 'center',
+  },
+  additionalImage: {
+    width: 100,
+    height: 150,
+    marginRight: 10,
+  },
+  additionalTextContainer: {
+    flex: 1,
+  },
+  additionalName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  additionalSummary: {
+    marginTop: 5,
+    fontSize: 14,
+  },
+  mainContainer: {
+    flex: 1,
+    flexDirection: 'row',
+  },
+
+
 });
 

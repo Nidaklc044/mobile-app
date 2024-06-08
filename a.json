@@ -1,45 +1,43 @@
-{
-    "kitaplar": [
-      {
-        "ad": "Çalıkuşu",
-        "yazar": "Reşat Nuri Güntekin",
-        "özet": "Feride, öksüz ve yetim bir kızdır. Çocukluğunu, amcasının yanında, oldukça mutsuz bir şekilde geçirir. Ancak, amcasının zengin bir ailenin yanında mürebbiyelik yapmak istemesiyle hayatı değişir."
-      },
-      {
-        "ad": "Suç ve Ceza",
-        "yazar": "Fyodor Dostoyevski",
-        "özet": "Roman, bir genç adam olan Raskolnikov'un iç dünyasına odaklanır. Raskolnikov, toplumda kendisini üstün gören bireylerin işlediği suçları haklı görmekte ve kendi aklına göre cezalandırmaktadır. Ancak işlediği cinayetin ardından vicdan azabı ve korkularla mücadele etmeye başlar."
-      },
-      {
-        "ad": "Dönüşüm",
-        "yazar": "Franz Kafka",
-        "özet": "Gregor Samsa adındaki bir adam, bir sabah kendisini dev bir böceğe dönüşmüş olarak bulur. Bu dönüşümle birlikte yaşadığı zorlukları ve ailesiyle olan ilişkisindeki değişiklikleri konu alır."
-      },
-      {
-        "ad": "Serenad",
-        "yazar": "Zülfü Livaneli",
-        "özet": "Serenad, yaşlı bir orkestra şefi ve genç bir şarkıcı arasındaki aşk hikayesini anlatır. İki farklı dönemde geçen bu hikaye, politik olaylarla da iç içe geçmiştir."
-      },
-      {
-        "ad": "Anna Karenina",
-        "yazar": "Lev Tolstoy",
-        "özet": "Anna Karenina, toplumun kurallarıyla başa çıkmaya çalışan bir kadının hikayesini anlatır. Anna, kocasıyla olan evliliğini sorgulamaya başlar ve tutkulu bir ilişki yaşadığı bir adamla birlikte olmaya karar verir."
-      },
-      {
-        "ad": "Bilinmeyen Kavga",
-        "yazar": "Yunus Emre",
-        "özet": "Bilinmeyen Kavga, köy hayatını ve köyde yaşanan kavgaları konu alır. Roman, bir ailenin içinde bulunduğu maddi zorlukları ve bu zorluklarla mücadele etme çabalarını anlatır."
-      },
-      {
-        "ad": "Saatleri Ayarlama Enstitüsü",
-        "yazar": "Ahmet Hamdi Tanpınar",
-        "özet": "Roman, İstanbul'da bir saat ayarlama enstitüsünde geçer. Burada çalışan ve bir yandan da yaşadığı aşk ilişkisini konu alır."
-      },
-      {
-        "ad": "Olağanüstü Bir Gece",
-        "yazar": "Stefan Zweig",
-        "özet": "Bir tren yolculuğunda tanışan iki yabancının yaşadıklarını konu alır. İki kişi, birbirlerine karşı açılırlar ve yaşamlarındaki derin etkileri anlamaya çalışırlar."
-      }
-    ]
-  }
+[
+    {
+      "image": "./image/calikusu.png",
+      "name": "Çalıkuşu",
+      "summary": "Çalıkuşu Kitabı Konusu genel olarak, Feride ve Kamran arasında yaşanan aşk Konusu değinmektedir. Kısaca Çalıkuşu Kitabı Feride, Kamran karşısında hırçınlaşmış ve ondan nefret ettiğini dile getirmiş olsa da yaşadığı ömrü boyunca onu hep sevdiği Konusu vurgulanmıştır. Çalıkuşu Kitabı ihanet, gurur ve kıskançlık temaları romanda derinlemesine işlenmektedir. Çalıkuşu Kitabı, bu noktadan sonra Anadolu’nun çeşitli yerlerinde öğretmenlik yapmaya başlaması ile devam eder. Feride son derece idealist bir kızdır. Ancak güzelliği her zaman onun başına bela olmaktadır. Hakkında birçok farklı dedikodu çıkmaktadır. Zeyniler Köyü içerisinde yaşarken tanıştığı Doktor Hayrullah Bey ile Kuşadası’nda ikinci defa karşılaşır. Hayrullah Bey son derece babacan bir yapıya sahiptir. Feride’yi de kızı gibi korumaktadır. Ancak halkın çıkarttığı dedikodular ve ortaya attıkları onun “Çalıkuşu” Feride ile kağıt üzerinde evlenmesine sebep olur. Fakat aralarında her zaman bir baba ve kızı ilişkisi bulunmaktadır. Bu durumda hiçbir zaman bozulmamaktadır."
+    },
+    {
+      "image": "./image/suc.png",
+      "name": "Suç ve Ceza",
+      "summary": "Suç ve Ceza özeti"
+    },
+    {
+      "image": "./image/donusum.png",
+      "name": "Dönüşüm",
+      "summary": "Dönüşüm özeti"
+    },
+    {
+      "image": "./image/livaneli.png",
+      "name": "Serenad",
+      "summary": "Serenad özeti"
+    },
+    {
+      "image": "./image/anna.png",
+      "name": "Anna Karenina",
+      "summary": "Anna Karenina özeti"
+    },
+    {
+      "image": "./image/bk.png",
+      "name": "Bilinmeyen Kavga",
+      "summary": "Bilinmeyen Kavga özeti"
+    },
+    {
+      "image": "./image/saat.png",
+      "name": "Saatleri Ayarlama \nEnstitüsü",
+      "summary": "Saatleri A. Enstitüsü özeti"
+    },
+    {
+      "image": "./image/gece.png",
+      "name": "Olağanüstü \nBir Gece",
+      "summary": "Olağanüstü Bir Gece özeti"
+    }
+  ]
   
