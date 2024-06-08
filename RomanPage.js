@@ -35,25 +35,6 @@ const RomanPage = () => {
     { image: require('./image/kayıp sembol.png'), name: 'Kayıp Sembol', summary: 'Roman, Robert Langdon’ın yakın arkadaşı Peter Solomon tarafından bir konferans vermek üzere ABD Capitol’üne çağrılmasıyla başlıyor. Ancak Robert Langdon Capitol’e gittiğinde oyuna geldiğini fark ediyor. Arkadaşı Peter’ın binanın koridorunun ortasında bulunan kopmuş eli ile Robert’ın, Peter’ı kurtarmak için Masonlar tarafından saklandığı söylenen Antik Gizemleri ortaya çıkarması bekleniyor. Ancak Robert neler olup bittiğini anlamaya çalışırken, CIA devreye girer ve Robert, CIA direktörü Inoue Sato’nun da Capitol’e gelmesiyle durumun ciddiyetini anlamaya başlar.Robert, Sato ve Trent Anderson, Capitol Güvenlik Şefi; Peter’ın elini incelediklerinde üzerinde birçok dövme ve kod bulurlar. Bu semboller ve kodlar onları Peter’ın Capitol’ün altında bulunan ofisine götürür. Burada Robert, Sato ve Anderson, Masonik Piramit olarak bilinen ve Kadim Gizemlere giden yolu işaretleyen bir piramit bulurlar. Bu sırada Robert’tan şüphelenen Sato, bu piramidin kapak taşının Robert’ın çantasında olduğu haberini alır. Sato daha sonra Anderson’a Robert’ı tutuklamasını emreder. Robert, çantasında bulunan kapak taşından habersiz olduğunu açıklamaya çalışırken, Capitol Binası’nın Mimarı ve Peter’ın yakın bir mason arkadaşı olan Warren Bellamy, Sato ve Anderson’a saldırır, onları bayıltır ve Robert’ı orada bulunan bir kütüphaneye götürür.' },
   ];
 
-// Resim containerlarını seç
-const imageContainers = document.querySelectorAll('.image-container');
-
-// Her bir container için işlem yap
-imageContainers.forEach(container => {
-  // Resmin adını al
-  const imageName = container.querySelector('img').getAttribute('src');
-  
-  // Resmin özetini al
-  const summary = imageSummaries[imageName];
-  
-  // Özet elementini oluştur
-  const summaryElement = document.createElement('div');
-  summaryElement.classList.add('summary');
-  summaryElement.textContent = summary;
-  
-  // Container'a özeti ekle
-  container.appendChild(summaryElement);
-});
   const handleImagePress = () => {
     const nextIndex = (currentImageIndex + 1) % images.length;
     setCurrentImageIndex(nextIndex);
@@ -99,13 +80,19 @@ imageContainers.forEach(container => {
       </View>
       
       <ScrollView style={styles.additionalImagesContainer}>
-        {additionalImages.map((item, index) => (
-          <View key={index} style={styles.additionalImageContainer}>
-            <Image source={item.image} style={styles.additionalImage} resizeMode="cover" />
-            <Text style={styles.additionalText}>{item.name}</Text>
-          </View>
-        ))}
-      </ScrollView>
+          {additionalImages.map((item, index) => (
+            <View key={index} style={styles.additionalImageContainer}>
+              <Image source={item.image} style={styles.additionalImage} resizeMode="cover" />
+              <View style={styles.additionalTextContainer}>
+                <Text style={styles.additionalName}>{item.name}</Text>
+                <Text style={styles.additionalSummary}>{item.summary.slice(0, 100)}</Text>
+                <TouchableOpacity onPress={() => handleOzetPress(item)}>
+                  <Text style={{ color: 'blue', marginTop: 5 }}>Devamını Oku</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          ))}
+        </ScrollView>
     </ScrollView>
   );
 };
