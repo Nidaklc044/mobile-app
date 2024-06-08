@@ -4,6 +4,61 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   container: {
+      container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  mainContainer: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  scrollContent: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  imageContainer: {
+    height: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    width: 300,
+    height: 200,
+  },
+  otherImagesContainer: {
+    marginVertical: 10,
+  },
+  otherImageContainer: {
+    margin: 5,
+    alignItems: 'center',
+  },
+  otherImage: {
+    width: 100,
+    height: 100,
+  },
+  subText: {
+    textAlign: 'center',
+  },
+  additionalImagesContainer: {
+    marginVertical: 10,
+  },
+  additionalImageContainer: {
+    margin: 5,
+    alignItems: 'center',
+  },
+  additionalImage: {
+    width: 100,
+    height: 100,
+  },
+  additionalText: {
+    textAlign: 'center',
+  },
+  mostRead: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
     flex: 1,
     padding: 15,
   },
@@ -93,5 +148,7 @@ export const styles = StyleSheet.create({
   footerText: {
     color: 'white',
     backgroundColor:'blue',
+    
   },
 });
+

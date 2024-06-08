@@ -1,0 +1,45 @@
+{
+    "kitaplar": [
+      {
+        "ad": "Çalıkuşu",
+        "yazar": "Reşat Nuri Güntekin",
+        "özet": "Feride, öksüz ve yetim bir kızdır. Çocukluğunu, amcasının yanında, oldukça mutsuz bir şekilde geçirir. Ancak, amcasının zengin bir ailenin yanında mürebbiyelik yapmak istemesiyle hayatı değişir."
+      },
+      {
+        "ad": "Suç ve Ceza",
+        "yazar": "Fyodor Dostoyevski",
+        "özet": "Roman, bir genç adam olan Raskolnikov'un iç dünyasına odaklanır. Raskolnikov, toplumda kendisini üstün gören bireylerin işlediği suçları haklı görmekte ve kendi aklına göre cezalandırmaktadır. Ancak işlediği cinayetin ardından vicdan azabı ve korkularla mücadele etmeye başlar."
+      },
+      {
+        "ad": "Dönüşüm",
+        "yazar": "Franz Kafka",
+        "özet": "Gregor Samsa adındaki bir adam, bir sabah kendisini dev bir böceğe dönüşmüş olarak bulur. Bu dönüşümle birlikte yaşadığı zorlukları ve ailesiyle olan ilişkisindeki değişiklikleri konu alır."
+      },
+      {
+        "ad": "Serenad",
+        "yazar": "Zülfü Livaneli",
+        "özet": "Serenad, yaşlı bir orkestra şefi ve genç bir şarkıcı arasındaki aşk hikayesini anlatır. İki farklı dönemde geçen bu hikaye, politik olaylarla da iç içe geçmiştir."
+      },
+      {
+        "ad": "Anna Karenina",
+        "yazar": "Lev Tolstoy",
+        "özet": "Anna Karenina, toplumun kurallarıyla başa çıkmaya çalışan bir kadının hikayesini anlatır. Anna, kocasıyla olan evliliğini sorgulamaya başlar ve tutkulu bir ilişki yaşadığı bir adamla birlikte olmaya karar verir."
+      },
+      {
+        "ad": "Bilinmeyen Kavga",
+        "yazar": "Yunus Emre",
+        "özet": "Bilinmeyen Kavga, köy hayatını ve köyde yaşanan kavgaları konu alır. Roman, bir ailenin içinde bulunduğu maddi zorlukları ve bu zorluklarla mücadele etme çabalarını anlatır."
+      },
+      {
+        "ad": "Saatleri Ayarlama Enstitüsü",
+        "yazar": "Ahmet Hamdi Tanpınar",
+        "özet": "Roman, İstanbul'da bir saat ayarlama enstitüsünde geçer. Burada çalışan ve bir yandan da yaşadığı aşk ilişkisini konu alır."
+      },
+      {
+        "ad": "Olağanüstü Bir Gece",
+        "yazar": "Stefan Zweig",
+        "özet": "Bir tren yolculuğunda tanışan iki yabancının yaşadıklarını konu alır. İki kişi, birbirlerine karşı açılırlar ve yaşamlarındaki derin etkileri anlamaya çalışırlar."
+      }
+    ]
+  }
+  

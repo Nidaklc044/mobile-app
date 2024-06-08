@@ -9,10 +9,12 @@ import Sidebar from './components/sidebar';
 import Navbar from './components/navbar';
 import HikayePage from './HikayePage'; // HikayePage bileşenini içe aktar
 import RomanPage from './RomanPage'; // RomanPage bileşenini içe aktar
+import OzetDetay from './OzetDetay'; // OzetDetay bileşenini içe aktar
 
 export default function App() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState('anasayfa');
+  const [selectedOzet, setSelectedOzet] = useState(null); // Tıklanan özetin detaylarını saklamak için state
 
   const images = [
     require('./image/bbkm.png'),
@@ -23,21 +25,12 @@ export default function App() {
 
   const otherImages = [
     { image: require('./image/calikusu.png'), name: 'Çalıkuşu', summary: 'Çalıkuşu özeti' },
-    { image: require('./image/suc.png'), name: 'Suç ve Ceza', summary: 'Suç ve Ceza özeti' },
-    { image: require('./image/donusum.png'), name: 'Dönüşüm', summary: 'Dönüşüm özeti' },
-    { image: require('./image/livaneli.png'), name: 'Serenad', summary: 'Serenad özeti' },
-    { image: require('./image/anna.png'), name: 'Anna Karenina', summary: 'Anna Karenina özeti' },
-    { image: require('./image/bk.png'), name: 'Bilinmeyen Kavga', summary: 'Bilinmeyen Kavga özeti' },
-    { image: require('./image/saat.png'), name: 'Saatleri Ayarlama \nEnstitüsü', summary: 'Saatleri A. Enstitüsü özeti' },
-    { image: require('./image/gece.png'), name: 'Olağanüstü \nBir Gece', summary: 'Olağanüstü Bir Gece özeti' },
+    // Diğer özetler
   ];
 
   const additionalImages = [
     { image: require('./image/mufettislermufettisi.png'), name: ' Müfettişler Müfettişi', summary: 'Image 4 özeti' },
-    { image: require('./image/bilinmeyenbirkm.png'), name: 'Bilinmeyen Bir \nKadının Mektubu', summary: 'Image 1 özeti' },
-    { image: require('./image/dünya.png'), name: 'Dünyanın \nMerkezine Yolculuk', summary: 'Image 2 özeti' },
-    { image: require('./image/icimizdekibiz.png'), name: 'İçimizdeki Biz', summary: 'Image 3 özeti' },
-    { image: require('./image/kosktekiesrar.png'), name: 'Köşkteki Esrar', summary: 'Image 4 özeti' },
+    // Diğer özetler
   ];
 
   const handleImagePress = () => {
@@ -47,6 +40,12 @@ export default function App() {
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
+  };
+
+  // Özet detayları göstermek için fonksiyon
+  const handleOzetPress = (ozet) => {
+    setSelectedOzet(ozet); // Tıklanan özetin detaylarını state'e kaydet
+    setCurrentPage('ozetDetay'); // Özet detaylarını göstermek için sayfayı değiştir
   };
 
   let pageContent;
@@ -65,7 +64,7 @@ export default function App() {
           <Text style={styles.mostRead}>En Çok Okunanlar</Text>
           <ScrollView horizontal>
             {otherImages.map((item, index) => (
-              <TouchableOpacity key={index} style={styles.otherImageContainer}>
+              <TouchableOpacity key={index} style={styles.otherImageContainer} onPress={() => handleOzetPress(item)}>
                 <Image source={item.image} style={styles.otherImage} resizeMode="cover" />
                 <Text style={styles.subText}>{item.name}</Text>
               </TouchableOpacity>
@@ -75,9 +74,11 @@ export default function App() {
 
         <ScrollView style={styles.additionalImagesContainer}>
           {additionalImages.map((item, index) => (
-            <View key={index} style={styles.additionalImageContainer}>
-              <Image source={item.image} style={styles.additionalImage} resizeMode="cover" />
-              <Text style={styles.additionalText}>{item.name}</Text>
+            <View key={index} style={styles.additionalImageContainer} onPress={() => handleOzetPress(item)}>
+              <TouchableOpacity onPress={() => handleOzetPress(item)}>
+                <Image source={item.image} style={styles.additionalImage} resizeMode="cover" />
+                <Text style={styles.additionalText}>{item.name}</Text>
+              </TouchableOpacity>
             </View>
           ))}
         </ScrollView>
@@ -87,6 +88,8 @@ export default function App() {
     pageContent = <RomanPage />; // RomanPage bileşenini kullan
   } else if (currentPage === 'hikaye') {
     pageContent = <HikayePage />; // HikayePage bileşenini kullan
+  } else if (currentPage === 'ozetDetay') {
+    pageContent = <OzetDetay ozet={selectedOzet} />; // Tıklanan özetin detaylarını göstermek için OzetDetay bileşenini kullan
   }
 
   return (
