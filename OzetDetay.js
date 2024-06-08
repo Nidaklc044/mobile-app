@@ -1,19 +1,25 @@
 // OzetDetay.js
 
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Image, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { styles } from './styles';
 
-const OzetDetay = ({ ozet }) => {
+const OzetDetay = ({ ozet, image, handleBack }) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>{ozet.name}</Text>
+    <ScrollView contentContainerStyle={styles.scrollView}>
+      <View style={styles.container}>
+        <TouchableOpacity onPress={handleBack} style={styles.backButton}>
+          <Text style={styles.backText}>Geri</Text>
+        </TouchableOpacity>
+        <View style={styles.header}>
+          <Image source={image} style={styles.image} resizeMode="cover" />
+          <Text style={styles.title}>{ozet.name}</Text>
+        </View>
+        <View style={styles.content}>
+          <Text style={styles.summary}>{ozet.summary}</Text>
+        </View>
       </View>
-      <View style={styles.content}>
-        <Text style={styles.summary}>{ozet.summary}</Text>
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 

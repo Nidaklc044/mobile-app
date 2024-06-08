@@ -1,3 +1,5 @@
+// App.js
+
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { View, ScrollView, TouchableOpacity, Image, Text } from 'react-native';
@@ -7,12 +9,13 @@ import Sidebar from './components/sidebar';
 import Navbar from './components/navbar';
 import HikayePage from './HikayePage';
 import RomanPage from './RomanPage';
-import OzetDetay from './OzetDetay'; // Yeni eklenen bileşen
+import OzetDetay from './OzetDetay';
 
 export default function App() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState('anasayfa');
-  const [selectedOzet, setSelectedOzet] = useState(null); // Seçilen özetin tutulması için state
+  const [selectedOzet, setSelectedOzet] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const images = [
     require('./image/bbkm.png'),
@@ -22,7 +25,8 @@ export default function App() {
   ];
 
   const otherImages = [
-    { image: require('./image/calikusu.png'), name: 'Çalıkuşu', summary: 'Çalıkuşu özeti' },
+    // otherImages tanımı buraya gelecek
+    { image: require('./image/calikusu.png'), name: 'Çalıkuşu', summary: 'alıkuşu Kitabı Konusu genel olarak, Feride ve Kamran arasında yaşanan aşk Konusu değinmektedir. Kısaca Çalıkuşu Kitabı Feride, Kamran karşısında hırçınlaşmış ve ondan nefret ettiğini dile getirmiş olsa da yaşadığı ömrü boyunca onu hep sevdiği Konusu vurgulanmıştır. Çalıkuşu Kitabı ihanet, gurur ve kıskançlık temaları romanda derinlemesine işlenmektedir. Çalıkuşu Kitabı, bu noktadan sonra Anadolu’nun çeşitli yerlerinde öğretmenlik yapmaya başlaması ile devam eder. Feride son derece idealist bir kızdır. Ancak güzelliği her zaman onun başına bela olmaktadır. Hakkında birçok farklı dedikodu çıkmaktadır. Zeyniler Köyü içerisinde yaşarken tanıştığı Doktor Hayrullah Bey ile Kuşadası’nda ikinci defa karşılaşır. Hayrullah Bey son derece babacan bir yapıya sahiptir. Feride’yi de kızı gibi korumaktadır. Ancak halkın çıkarttığı dedikodular ve ortaya attıkları onun “Çalıkuşu” Feride ile kağıt üzerinde evlenmesine sebep olur. Fakat aralarında her zaman bir baba ve kızı ilişkisi bulunmaktadır. Bu durumda hiçbir zaman bozulmamaktadır.' },
     { image: require('./image/suc.png'), name: 'Suç ve Ceza', summary: 'Suç ve Ceza özeti' },
     { image: require('./image/donusum.png'), name: 'Dönüşüm', summary: 'Dönüşüm özeti' },
     { image: require('./image/livaneli.png'), name: 'Serenad', summary: 'Serenad özeti' },
@@ -31,6 +35,7 @@ export default function App() {
     { image: require('./image/saat.png'), name: 'Saatleri Ayarlama \nEnstitüsü', summary: 'Saatleri A. Enstitüsü özeti' },
     { image: require('./image/gece.png'), name: 'Olağanüstü \nBir Gece', summary: 'Olağanüstü Bir Gece özeti' },
   ];
+  
 
   const additionalImages = [
     { image: require('./image/mufettislermufettisi.png'), name: ' Müfettişler Müfettişi', summary: 'Image 4 özeti' },
@@ -38,6 +43,7 @@ export default function App() {
     { image: require('./image/dünya.png'), name: 'Dünyanın \nMerkezine Yolculuk', summary: 'Image 2 özeti' },
     { image: require('./image/icimizdekibiz.png'), name: 'İçimizdeki Biz', summary: 'Image 3 özeti' },
     { image: require('./image/kosktekiesrar.png'), name: 'Köşkteki Esrar', summary: 'Image 4 özeti' },
+  
   ];
 
   const handleImagePress = () => {
@@ -50,8 +56,13 @@ export default function App() {
   };
 
   const handleOzetPress = (item) => {
-    setSelectedOzet(item); // Seçilen özeti state'e ata
-    setCurrentPage('ozetDetay'); // Sayfa durumunu 'ozetDetay' olarak değiştir
+    setSelectedOzet(item);
+    setSelectedImage(item.image);
+    setCurrentPage('ozetDetay');
+  };
+
+  const handleBack = () => {
+    setCurrentPage('anasayfa');
   };
 
   let pageContent;
@@ -93,7 +104,7 @@ export default function App() {
   } else if (currentPage === 'hikaye') {
     pageContent = <HikayePage />;
   } else if (currentPage === 'ozetDetay') {
-    pageContent = <OzetDetay ozet={selectedOzet} />;
+    pageContent = <OzetDetay ozet={selectedOzet} image={selectedImage} handleBack={handleBack} />;
   }
 
   return (
