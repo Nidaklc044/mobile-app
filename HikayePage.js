@@ -12,8 +12,8 @@ const HikayePage = () => {
   const images = [
     require('./image/dokuzuncu.png'),
     require('./image/bülbül.png'),
-    require('./image/yln.png'),
-    require('./image/fare.png'),
+    require('./image/da.png'),
+    require('./image/sf.png'),
   ];
 
   const otherImages = [
@@ -31,8 +31,8 @@ const HikayePage = () => {
     { image: require('./image/Fareler Ve İnsanlar.png'), name: 'Fareler ve İnsanlar', summary: 'George ve Lennie, Amerika’ da yaşayan, çiftliklerde yaşayan toprak işçileridir. bu kişiler kendilerini diğer toprak işçilerinden farklı görürler. Çünkü işçiler kazandıkları parayı ya kumar oynayarak ya da genelevde harcamaktadır. Onların hayalleri vardır. Ve bu hayaller için biriktirdikleri para ile bir çiftlik satın alacaklarının hayalini kurmaktalar. Bu çiftlikte çeşitli hayvanlar besleyecekler ve tarımla uğraşmayı planlarlar. Şimdiye kadar gittikleri bütün çiftliklerde Lennie yüzünden kovulmuşlardır. Lennie uzun boylu, iri, güçlü bir insandır ama kafası fazla çalışmaz ve tek başına hareket etmeyen, devamlı birilerine muhtaç olan bir karakterdir. Bunun yanında sevdiği şeylere dokunma hastalığı vardır. George ve Lennie, arkadaşlarının tavsiyesi üzerine başka bir çiftlikte çalışmak için yola çıkarlar. Yol da Lennie bir fare bulur ve onu eliyle okşamaya başlar. Okşarken de fareyi sıkıca okşadığı için öldürür. George, farenin kendisine faydası olmadığını ve onu atması gerektiğini söyler. Ama Lennie ona zara vermediğini sadece okşadığını söyler. Sonra onu zorla yolda bırakır. Lennie’ nin bu davranışı ileri zamanlarda ikisine de zarar verecektir.' },
     { image: require('./image/Gurur ve Önyargı.png'), name: 'Gurur ve Önyargı', summary: '“Benim gururumu çiğnemeseydi onun kibrini kolaylıkla hoş görebilirdim!”  Varlıklı bir beyefendi olan Charles Bingley’nin Netherfield Park malikânesine yerleşmesi, civar hanelerde büyük bir heyecana neden olur. Evlenmemiş beş genç kızı olan Bay ve Bayan Bennet da aynı heyecan ve içlerinde yeşeren bir umutla, Charles Bingley şerefine bir balo verirler. Bay Bingley, evin en büyük ve en güzel kızı Jane’e gönlünü kaptırmıştır. Ancak baloda biri daha vardır ki görünürdeki kibri ve mesafeli duruşuyla dikkatleri çeker. Bu kişi, Bingley’nin yakın arkadaşı Bay Darcy’den başkası değildir. Baloda Bay Darcy’nin, ailenin en canlı ve cüretkâr kızı Elizabeth’le tanışıklığı, genç kız hakkında yaptığı nahoş bir yorum ve onunla dansa kalkmayı reddedişiyle başlamıştır.' },
     { image: require('./image/dünya.png'), name: 'Dünyanın Merkezine Yolculuk', summary: 'Dünyanın Merkezine Yolculuk özeti' },
-    { image: require('./image/icimizdekibiz.png'), name: 'İçimizdeki Biz', summary: 'İçimizdeki Biz özeti' },
-    { image: require('./image/kosktekiesrar.png'), name: 'Köşkteki Esrar', summary: 'Köşkteki Esrar özeti' },
+    { image: require('./image/yedinci gü.png'), name: 'Yedinci Gün', summary: 'Ömer, kendini genç ve güçlü hisseden kırk üç yaşında bir adamdır. Bir bankada genel müdür olarak çalışıyor. Rezzan adında akraba olmayan bir eşi, Işık adında bir oğlu ve Sevgi adında bir kızı vardır. Ömer, kızının âşıklarını bilmesine rağmen bu duruma sessiz kalır. Annesi çocuklarına ilgi göstermediği için bu durumlardan habersizdir. Rezzan sabahları kahvaltıya inmiyor. Kahvaltıyı hep Fatma adında bir hizmetçi hazırlar. O gün her şeyden habersiz işe giden Ömer, iş yerinde talihsiz bir olay yaşayacaktır. İşe geldiğinde müsteşar onu arar ve belgelerle ilgili sorular sorar. Ömer bir an kendisine yapılan delice hakareti kabul edemez ve müsteşara yumruk atar. Yumruk yedikten sonra panikler ve ani bir karar verir. Bu kararla Ankara’dan İstanbul’a tek yön bilet alır. Hatta bu olayla Ömer’in yıllardır biriktirdiği yorgunluğun yerini cesaret alır. Ailesinden ayrılan Ömer, işten kovulmanın stresiyle uçağa atlar ve İstanbul’a gider.' },
+    { image: require('./image/kayıp sembol.png'), name: 'Kayıp Sembol', summary: 'Roman, Robert Langdon’ın yakın arkadaşı Peter Solomon tarafından bir konferans vermek üzere ABD Capitol’üne çağrılmasıyla başlıyor. Ancak Robert Langdon Capitol’e gittiğinde oyuna geldiğini fark ediyor. Arkadaşı Peter’ın binanın koridorunun ortasında bulunan kopmuş eli ile Robert’ın, Peter’ı kurtarmak için Masonlar tarafından saklandığı söylenen Antik Gizemleri ortaya çıkarması bekleniyor. Ancak Robert neler olup bittiğini anlamaya çalışırken, CIA devreye girer ve Robert, CIA direktörü Inoue Sato’nun da Capitol’e gelmesiyle durumun ciddiyetini anlamaya başlar.Robert, Sato ve Trent Anderson, Capitol Güvenlik Şefi; Peter’ın elini incelediklerinde üzerinde birçok dövme ve kod bulurlar. Bu semboller ve kodlar onları Peter’ın Capitol’ün altında bulunan ofisine götürür. Burada Robert, Sato ve Anderson, Masonik Piramit olarak bilinen ve Kadim Gizemlere giden yolu işaretleyen bir piramit bulurlar. Bu sırada Robert’tan şüphelenen Sato, bu piramidin kapak taşının Robert’ın çantasında olduğu haberini alır. Sato daha sonra Anderson’a Robert’ı tutuklamasını emreder. Robert, çantasında bulunan kapak taşından habersiz olduğunu açıklamaya çalışırken, Capitol Binası’nın Mimarı ve Peter’ın yakın bir mason arkadaşı olan Warren Bellamy, Sato ve Anderson’a saldırır, onları bayıltır ve Robert’ı orada bulunan bir kütüphaneye götürür.' },
   ];
 
   const handleImagePress = () => {
@@ -51,10 +51,14 @@ const HikayePage = () => {
   };
 
   if (showOzet) {
-    return (
-      <OzetDetay ozet={selectedOzet} image={selectedImage} handleBack={handleBack} />
-    );
-  }
+
+} else if (currentPage === 'roman') {
+  pageContent = <RomanPage />;
+} else if (currentPage === 'hikaye') {
+  pageContent = <HikayePage />;
+} else if (currentPage === 'ozetDetay') {
+  pageContent = <OzetDetay ozet={selectedOzet} image={selectedImage} handleBack={handleBack} />;
+}
 
   return (
     <ScrollView style={styles.leftPanel}>
