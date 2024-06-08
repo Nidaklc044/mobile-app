@@ -43,6 +43,8 @@ const Search = () => {
                 onFocus={handleInputFocus}
                 onBlur={handleInputBlur}
             />
+
+            
             <TouchableOpacity style={styles.button} onPress={() => undefined}>
                 {'Ara'}
             </TouchableOpacity>

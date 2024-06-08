@@ -73,6 +73,8 @@ const Sidebar = () => {
             >
                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
                     <View style={[styles.modalContent, { width: '80%', maxHeight: '60%', paddingHorizontal: 20 }]}>
+                    
+                    //*  Kullanıcının seçtiği öğenin özetini görüntüler.
                         <ScrollView>
                             <Text style={{ color: 'black' }}>{selectedSummary}</Text>
                         </ScrollView>
@@ -87,7 +89,12 @@ const Sidebar = () => {
                 <Text style={styles.sidePanelText}>100 TEMEL</Text>
                 <Text style={styles.sidePanelText}>ESER</Text>
                 <ScrollView style={{ maxHeight: 690 }}>
+                   
+                   //*data.map(): Her bir veri öğesini döngüyle dolaşarak gösterir. Her öğe için bir 
+                   //*TouchableOpacity oluşturulur. Kullanıcı bu öğelere dokunduğunda, handleShowSummary işlevi çağrılır ve ilgili özeti göstermek için bir modal açılır.
+
                     {data.map((item, index) => (
+
                         <TouchableOpacity key={index} style={{ alignItems: 'center', marginTop: 10 }} onPress={() => handleShowSummary(item.summary)}>
                             <Image source={item.image} style={styles.sidePanelImage} />
                             <Text style={styles.sidePanelText}>{item.text}</Text>
